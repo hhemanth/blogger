@@ -1,0 +1,45 @@
+What is rails reflection?
+- See in a rails model,there are no db fields? How does rails know without any fields , db structure. What rails does is , it queries the db table, and finds out the fields in the table and acts accordingly.
+
+How does rails know which migrations to run and which migrations have already been run?
+- Rails stores the migrations which are already run in a different table.
+
+What about id in the table?
+serves as the table’s primary key , uses special column type in the DB called "serial".
+id is a field created by rails to maintain uniqueness of the table rows. If we need to modify the table, we should query the table by using id and then modifying it.
+
+What is a router?
+ The router decides what the request is trying to do, what resources it is trying to interact with. The router dissects a request based on the address it is requesting and other HTTP parameters (like the request type of GET or PUT). Let’s open the router’s configuration file, config/routes.rb
+
+ What is resource:articles?
+ This line tells Rails that we have a resource named articles and the router should expect requests to follow the RESTful model of web interaction (REpresentational State Transfer). The details don’t matter right now, but when you make a request like http://localhost:3000/articles/, the router will understand you’re looking for a listing of the articles, and http://localhost:3000/articles/new means you’re trying to create a new article.
+
+#articles_path - relative path
+#articles_url - full url with protocol, server, port and relative_path
+
+/articles(.:format) will match the URLs /articles/, /articles.json, /articles and other similar forms.
+
+What is instance variables??
+A normal Ruby instance variable is available to all methods within an instance.
+
+In Rails’ controllers, there’s a hack which allows instance variables to be automatically transferred from the controller to the object which renders the view template. So any data we want available in the view template should be promoted to an instance variable by adding a @ to the beginning.
+
+Naming Templates in rails?
+
+Why did we choose index.html.erb instead of the index.erb that the error message said it was looking for? Putting the HTML in the name makes it clear that this view is for generating HTML. In later versions of our blog we might create an RSS feed which would just mean creating an XML view template like index.xml.erb. Rails is smart enough to pick the right one based on the browser’s request, so when we just ask for http://localhost:3000/articles/ it will find the index.html.erb and render that file.
+
+What is erb?
+
+ERB is a templating language that allows us to mix Ruby into our HTML. There are only a few things to know about ERB:
+
+An ERB clause starts with <% or <%= and ends with %>
+If the clause started with <%, the result of the ruby code will be hidden
+If the clause started with <%=, the result of the ruby code will be output in place of the clause
+
+
+==Router helper==
+#<%= link_to article.title, article_path(article) %> translates to
+<a href="/articles/1">First Sample Article</a>
+
+
+
