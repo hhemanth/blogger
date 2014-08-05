@@ -41,5 +41,22 @@ If the clause started with <%=, the result of the ruby code will be output in pl
 #<%= link_to article.title, article_path(article) %> translates to
 <a href="/articles/1">First Sample Article</a>
 
+Why new.html.erb?
 
+The first piece, new, matches the name of the controller method. The second, html, specifies the output format sent to the client. The third, erb, specifies the language the template is written in. Under different circumstances, we might use new.json.erb to output JSON or new.html.haml to use the HAML templating language.
 
+What are require and permit??
+It works like this: You use two new methods, require and permit. They help you declare which attributes you’d like to accept. Most of the time, they’re used in a helper method. Add the below code to app/helpers/articles_helper.rb.
+
+What are strong parameters?
+#related to above question
+
+#About GET POST, DELETE, PUT
+While most browsers support all four verbs, GET, PUT, POST, and DELETE, HTML links are always GET, and HTML forms only support GET and POST. So what are we to do?
+
+Rails’ solution to this problem is to fake a DELETE verb. In your view template, you can add another attribute to the link like this:
+
+1
+<%= link_to "delete", article_path(@article), method: :delete %>
+
+Read about partials - Do not repeat yourself
