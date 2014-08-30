@@ -8,6 +8,9 @@
 
 </p>
 <body><%=@article.body %></body>
+<p><%= image_tag @article.image.url %></p>
+
+
 <p></p>
 <hr>
 
@@ -17,6 +20,8 @@
 <%= render partial: "comments/form" %>
 <p>
 </p>
+
+
 
 <br>
 
