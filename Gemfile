@@ -28,6 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem "paperclip"
+gem 'sorcery'
+
 
 
 group :doc do
